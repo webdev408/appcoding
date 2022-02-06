@@ -2,6 +2,14 @@
   text-align: center;
 }
 th {
-  text-align: left;
+  text-align: center;
   font-size: x-large;
+}
+table{
+  text-align: center;
+}
+input{
+  width: 100%;
+  font-size: x-large;
+  padding:0.2rem;
 }
