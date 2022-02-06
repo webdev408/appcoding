@@ -16,12 +16,42 @@ const PokemonRow = ({ pokemon, onSelect }) => (
 PokemonRow.propTypes = {
   pokemon: PropTypes.shape({
     name: PropTypes.shape({
-      english: PropTypes.string,
+      english: PropTypes.string.isRequired,
     }),
     type:PropTypes.arrayOf(PropTypes.string),
   }),
-  onSelect: PropTypes.func
+  onSelect: PropTypes.func.isRequired,
 }
+
+const PokemonInfo = ({ name, base }) => (
+  <div>
+    <h1>{name.english}</h1>
+    <table>
+      {Object.keys(base).map((key) => (
+        <tr key={key}>
+          <td>{key}</td>
+          <td>{base[key]}</td>
+        </tr>
+      ))}
+    </table>
+  </div>
+)
+
+PokemonInfo.propTypes = {
+  name: PropTypes.shape({
+    english: PropTypes.string,
+  }),
+  base: PropTypes.shape({
+    HP: PropTypes.number.isRequired,
+    Atttack: PropTypes.number.isRequired,
+    Defence: PropTypes.number.isRequired,
+    "Sp. Attack": PropTypes.number.isRequired,
+    "Sp.Defenses": PropTypes.number.isRequired,
+    Speed: PropTypes.number.isRequired,
+  }),
+}
+  
+
 
 function App() {
   const [filter, setFilter] = React.useState('')
@@ -48,9 +78,7 @@ function App() {
         </table>
         </div>
         {selectedItem && (
-          <div>
-            <h1>{selectedItem.name.english}</h1>
-          </div>
+          <PokemonInfo {...selectedItem} />
         )}
         </div>
     </div>
