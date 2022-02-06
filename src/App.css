@@ -7,6 +7,9 @@ th {
 }
 table{
   text-align: center;
+  background-color:gray;
+  margin:.5rem;
+  padding: .4rem;
 }
 input{
   width: 100%;
